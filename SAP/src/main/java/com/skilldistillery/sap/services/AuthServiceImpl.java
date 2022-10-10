@@ -22,7 +22,7 @@ public class AuthServiceImpl implements AuthService {
 	@Override
 	public User register(User user) {
 		user.setPassword(encoder.encode(user.getPassword()));
-		user.setActive(true);
+		user.setEnabled(true);
 		user.setRole("standard");
 		return userRepo.saveAndFlush(user);
 	}

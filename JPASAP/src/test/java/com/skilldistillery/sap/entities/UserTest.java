@@ -1,6 +1,7 @@
 package com.skilldistillery.sap.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,7 +23,7 @@ class UserTest {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		emf = Persistence.createEntityManagerFactory("JPAIntersteller");
+		emf = Persistence.createEntityManagerFactory("JPASAP");
 	}
 
 	@AfterAll
@@ -46,11 +47,8 @@ class UserTest {
 	@Test
 	void test_User_entity_mapping() {
 		assertNotNull(user);
+		assertEquals("adminemail@gmail.com", user.getUsername());
 	}
 	
-	@Test
-	void test_User_Profile_entity_mapping() {
-		assertNotNull(user);
-	}
 
 }
