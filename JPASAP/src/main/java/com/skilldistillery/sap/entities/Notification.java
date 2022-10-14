@@ -17,6 +17,8 @@ public class Notification {
 
 	  private String description;
 	  private String location;
+	  private boolean complete;
+	  private boolean enabled;
 	  
 		@ManyToOne
 		@JoinColumn(name="department_id")
@@ -44,6 +46,18 @@ public class Notification {
 	}
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+	public boolean isComplete() {
+		return complete;
+	}
+	public void setComplete(boolean complete) {
+		this.complete = complete;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	  
 

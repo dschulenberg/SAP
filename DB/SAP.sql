@@ -66,6 +66,8 @@ CREATE TABLE IF NOT EXISTS `notification` (
   `description` VARCHAR(45) NULL,
   `department_id` INT NOT NULL,
   `location` VARCHAR(45) NULL,
+  `complete` TINYINT NULL,
+  `enable` TINYINT NULL,
   PRIMARY KEY (`id`, `department_id`),
   INDEX `fk_notification_department1_idx` (`department_id` ASC),
   CONSTRAINT `fk_notification_department1`
@@ -87,6 +89,8 @@ CREATE TABLE IF NOT EXISTS `work_order` (
   `priority_id` INT NOT NULL,
   `notification_id` INT NOT NULL,
   `equipment` VARCHAR(45) NULL,
+  `complete` TINYINT NULL,
+  `enabled` TINYINT NULL,
   PRIMARY KEY (`id`, `priority_id`),
   INDEX `fk_work_order_priority_idx` (`priority_id` ASC),
   INDEX `fk_work_order_notification1_idx` (`notification_id` ASC),
@@ -154,10 +158,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `SAPdb`;
-INSERT INTO `notification` (`id`, `description`, `department_id`, `location`) VALUES (1, 'HVAC seems to be down', 3, 'Bldg 100, rm 201');
-INSERT INTO `notification` (`id`, `description`, `department_id`, `location`) VALUES (2, 'Unknown spilled liquid', 4, 'Bldg 300, rm 201');
-INSERT INTO `notification` (`id`, `description`, `department_id`, `location`) VALUES (3, 'Loose wiring found after construction', 2, 'Bldg 300, rm 11');
-INSERT INTO `notification` (`id`, `description`, `department_id`, `location`) VALUES (4, 'Compresor leaking', 1, 'Bldg 200, rm 101');
+INSERT INTO `notification` (`id`, `description`, `department_id`, `location`, `complete`, `enable`) VALUES (1, 'HVAC seems to be down', 3, 'Bldg 100, rm 201', 0, 1);
+INSERT INTO `notification` (`id`, `description`, `department_id`, `location`, `complete`, `enable`) VALUES (2, 'Unknown spilled liquid', 4, 'Bldg 300, rm 201', 0, 1);
+INSERT INTO `notification` (`id`, `description`, `department_id`, `location`, `complete`, `enable`) VALUES (3, 'Loose wiring found after construction', 2, 'Bldg 300, rm 11', 0, 1);
+INSERT INTO `notification` (`id`, `description`, `department_id`, `location`, `complete`, `enable`) VALUES (4, 'Compresor leaking', 1, 'Bldg 200, rm 101', 0, 1);
 
 COMMIT;
 
@@ -167,10 +171,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `SAPdb`;
-INSERT INTO `work_order` (`id`, `description`, `priority_id`, `notification_id`, `equipment`) VALUES (1, 'HVAC seems to be down', 4, 1, '1001-617-1U1');
-INSERT INTO `work_order` (`id`, `description`, `priority_id`, `notification_id`, `equipment`) VALUES (2, 'Unknown spilled liquid', 1, 2, '0000-414-1U1');
-INSERT INTO `work_order` (`id`, `description`, `priority_id`, `notification_id`, `equipment`) VALUES (3, 'Loose wiring found after construction', 2, 3, '1002-616-1U1');
-INSERT INTO `work_order` (`id`, `description`, `priority_id`, `notification_id`, `equipment`) VALUES (4, 'Compresor leaking', 3, 4, '0400-141-2U1');
+INSERT INTO `work_order` (`id`, `description`, `priority_id`, `notification_id`, `equipment`, `complete`, `enabled`) VALUES (1, 'HVAC seems to be down', 4, 1, '1001-617-1U1', 0, 1);
+INSERT INTO `work_order` (`id`, `description`, `priority_id`, `notification_id`, `equipment`, `complete`, `enabled`) VALUES (2, 'Unknown spilled liquid', 1, 2, '0000-414-1U1', 0, 1);
+INSERT INTO `work_order` (`id`, `description`, `priority_id`, `notification_id`, `equipment`, `complete`, `enabled`) VALUES (3, 'Loose wiring found after construction', 2, 3, '1002-616-1U1', 0, 1);
+INSERT INTO `work_order` (`id`, `description`, `priority_id`, `notification_id`, `equipment`, `complete`, `enabled`) VALUES (4, 'Compresor leaking', 3, 4, '0400-141-2U1', 0, 1);
 
 COMMIT;
 

@@ -20,6 +20,8 @@ public class WorkOrder {
 
 	  private String description;
 	  private String equipment;
+	  private boolean complete;
+	  private boolean enabled;
 	  
 		@ManyToOne
 		@JoinColumn(name="priority_id")
@@ -57,6 +59,18 @@ public class WorkOrder {
 	}
 	public void setNotification(Notification notification) {
 		this.notification = notification;
+	}
+	public boolean isComplete() {
+		return complete;
+	}
+	public void setComplete(boolean complete) {
+		this.complete = complete;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	  
 
