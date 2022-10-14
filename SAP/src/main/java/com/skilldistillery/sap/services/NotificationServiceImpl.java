@@ -39,11 +39,12 @@ public class NotificationServiceImpl implements NotificationService {
 	@Override
 	public Notification update(int id, Notification notification) {
 		Notification originalNoti = findById(id);
+		//get department by id
 		originalNoti.setDepartment(notification.getDepartment());
 		originalNoti.setDescription(notification.getDescription());
 		originalNoti.setLocation(notification.getLocation());
 		originalNoti.setComplete(notification.isComplete());
-		originalNoti.setEnabled(notification.isEnabled());
+		originalNoti.setEnable(notification.isEnable());
 		notiRepo.save(originalNoti);
 		return originalNoti;
 	}
@@ -51,7 +52,8 @@ public class NotificationServiceImpl implements NotificationService {
 	@Override
 	public boolean destroy(int id) {
 		Notification originalNoti = findById(id);
-		originalNoti.setEnabled(false);	
+		originalNoti.setEnable(false);	
+		notiRepo.save(originalNoti);
 		return true;
 	}
 

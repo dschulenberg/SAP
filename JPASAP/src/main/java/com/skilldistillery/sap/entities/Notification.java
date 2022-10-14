@@ -18,7 +18,7 @@ public class Notification {
 	  private String description;
 	  private String location;
 	  private boolean complete;
-	  private boolean enabled;
+	  private boolean enable;
 	  
 		@ManyToOne
 		@JoinColumn(name="department_id")
@@ -53,11 +53,11 @@ public class Notification {
 	public void setComplete(boolean complete) {
 		this.complete = complete;
 	}
-	public boolean isEnabled() {
-		return enabled;
+	public boolean isEnable() {
+		return enable;
 	}
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	public void setEnable(boolean enable) {
+		this.enable = enable;
 	}
 	  
 
