@@ -2,8 +2,11 @@ package com.skilldistillery.sap.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.skilldistillery.sap.entities.WorkOrder;
 
+@Service
 public class WorkOrderServiceImpl implements WorkOrderService {
 
 	@Override
